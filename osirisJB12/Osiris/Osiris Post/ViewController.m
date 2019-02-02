@@ -97,7 +97,7 @@
                                          preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* cancel = [UIAlertAction
-                             actionWithTitle:@"Dismiss"
+                             actionWithTitle:@"Respring"
                              style:UIAlertActionStyleDefault
                              handler:^(UIAlertAction * action) {
                                  [self respringAndGiveBackCreds];
@@ -110,7 +110,7 @@
     
 }
 -(void) respringAndGiveBackCreds {
-    if(reSpring() == 0){
+    if(remountRootFS() == 0){
         printf("[i] Giving process' credentials back. We don't need kernel's anymore and it's safe to give them back!\n");
         //Give back the process creds.
         //restore_credentials(ucred_field, ucred);
@@ -124,7 +124,7 @@
                                          message:@"Please reboot your iPhone and try again!"
                                          preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Dismiss"
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Respring"
                              style:UIAlertActionStyleDefault
                              handler:^(UIAlertAction * action) {
                                  exit(EXIT_FAILURE);
